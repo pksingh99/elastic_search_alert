@@ -1,0 +1,29 @@
+Step 1 : Copy CURL request from Kibana
+
+To copy curl request, go to kibana create your visualization and run it. Click inspect element and go to Network section. In the network section check for file called "_msearch" click on it and copy it as CURL request.
+
+Step 2 : Create a shell script file by refering file main.sh 
+
+Main File 
+Line 2,3,4 : Gets the time this time is then passed to curl request.
+Line 5 : Creates a variable which coantains the modified curl request with time and escaping characters. 
+Line 6,7 : The output of this filw will be written to another shell script file called "out.sh". Out.sh will conatin your final modified CURL request.
+Line 8 : Executes this out.sh file and and will generate out.json file. The json file will contain the response data. 
+Line 9 : nodejs script "alert.js" will read the JSON response file and send alerts accroding to your conditions specified in the script. 
+
+Note that you can have any condition, you are not restricted to any particular condition like in case of elast alert.
+
+Now to keep this script this process running you will have to run a cron job. for this you willhave to use nodejs file node_cron.js does the same.
+
+You will have to install below npm in your nodejs setup.
+
+jsonfile
+random-number
+nodemailer
+node-cron
+child_process
+
+
+
+
+
